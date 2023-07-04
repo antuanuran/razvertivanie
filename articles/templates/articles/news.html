@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Статьи</title>
+
+</head>
+
+<body>
+
+
+{% for article in articles_all %}
+  <br>  **************************************************************************************************
+
+    <h4> {{ article.title }} </h4>
+         {{ article.text }}
+         <br> <img src="/media/{{ article.image }}">
+
+    {% for art in  article.scopes.all %}
+
+        {% if art.is_main %}
+            <br> <h4> <p style="color:#0000FF"> {{ art.tag.name }} </p>  </h4>
+        {% else %}
+            <br> {{ art.tag.name }}
+        {% endif %}
+
+    {% endfor %}
+
+
+{% endfor %}
+
+
+
+</body>
+</html>
